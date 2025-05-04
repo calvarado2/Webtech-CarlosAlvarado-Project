@@ -1,9 +1,15 @@
-/* General Styles */
+
 body {
     font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: whitesmoke;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
 header {
@@ -13,7 +19,9 @@ header {
     text-align: center;
 }
 
-
+header.dark-mode {
+    background: linear-gradient(135deg, #333 0%, #555 100%);
+}
 
 nav ul {
     list-style-type: none;
@@ -35,10 +43,14 @@ nav ul li a {
     font-weight: bold;
 }
 
+nav ul li a.dark-mode {
+    color: #e0e0e0;
+}
+
 nav ul li .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #6a11cb;
+    background-color: rgb(210, 75, 150);
     min-width: 160px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -65,6 +77,13 @@ section {
     margin: 1em auto;
     max-width: 800px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Adjust the value as needed */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+section.dark-mode {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
 }
 
 form {
@@ -78,6 +97,12 @@ form input, form textarea, form button {
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+form input.dark-mode, form textarea.dark-mode, form button.dark-mode {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #555;
 }
 
 form button {
@@ -96,17 +121,25 @@ footer {
     color: white;
     text-align: center;
     padding: 1em;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
 
+footer.dark-mode {
+    background: linear-gradient(135deg, #333 0%, #555 100%);
+}
+
 footer a {
-    color: #ffcc00;
+    color: white;
+    font-weight: bold;
     text-decoration: none;
 }
 
-/* Responsive Design */
+footer a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -126,24 +159,36 @@ footer a {
         width: 100%;
     }
 }
-section {
-    margin-bottom: 20px; /* Adjust the value as needed */
+/* Toggle Button Styles */
+#dark-mode-toggle {
+    background-color: #6a11cb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 10px;
 }
 
-footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    background-color: #f1f1f1;
-    padding: 10px 0; 
-    text-align: center;
-}
-footer a {
-    color: #333; 
-    text-decoration: none;
-}
-footer a:hover {
-    text-decoration: underline; 
+#dark-mode-toggle:hover {
+    background-color: #2575fc;
 }
 
-    
+body.dark-mode #dark-mode-toggle {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode #dark-mode-toggle:hover {
+    background-color: #555;
+}
+/* Responsive Design for Toggle Button */
+@media (max-width: 768px) {
+    #dark-mode-toggle {
+        width: 100%;
+        margin-top: 20px; 
+    }
+}
